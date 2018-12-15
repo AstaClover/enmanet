@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='enmanet.conf'
-CONFIGFOLDER='/root/.enmanet/mainnet/'
+CONFIGFOLDER='/root/.enmanet/mainnet'
 COIN_DAEMON='enmanetd'
 COIN_CLI='enmanet-cli'
 COIN_PATH='/usr/local/bin/'
