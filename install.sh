@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='enmanet.conf'
-CONFIGFOLDER='/root/.enmanet/mainnet/'
+CONFIGFOLDER='/root/.enmanet'
 COIN_DAEMON='enmanetd'
 COIN_CLI='enmanet-cli'
 COIN_PATH='/usr/local/bin/'
@@ -74,7 +74,7 @@ function create_config() {
   mkdir $CONFIGFOLDER >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-  cat << EOF > $CONFIGFOLDER/$CONFIG_FILE
+  cat << EOF > $CONFIGFOLDER/mainnet/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
