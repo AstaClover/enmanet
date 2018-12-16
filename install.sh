@@ -11,6 +11,7 @@ COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='enmanet'
 COIN_PORT=16555
 RPC_PORT=11556
+CONFIGFOLDER2='/root/.enmanet/mainnet'
 
 NODEIP=$(curl -s4 api.ipify.org)
 
@@ -71,10 +72,10 @@ EOF
 
 
 function create_config() {
-  mkdir $CONFIGFOLDER >/dev/null 2>&1
+  mkdir $CONFIGFOLDER && mkdir $CONFIGFOLDER2 >/dev/null 2>&1
   RPCUSER=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w10 | head -n1)
   RPCPASSWORD=$(tr -cd '[:alnum:]' < /dev/urandom | fold -w22 | head -n1)
-  cat << EOF > $CONFIGFOLDER/mainnet/$CONFIG_FILE
+  cat << EOF > $CONFIGFOLDER/$CONFIGFOLDER2/$CONFIG_FILE
 rpcuser=$RPCUSER
 rpcpassword=$RPCPASSWORD
 rpcport=$RPC_PORT
